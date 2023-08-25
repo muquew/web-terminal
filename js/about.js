@@ -22,7 +22,7 @@ inputBox.addEventListener("input", (event) => {
     updateInputCmd();
 });
 
-inputBox.addEventListener("keydown", (event) => {
+inputBox.addEventListener("keydown", async (event) => {
     if (event.code === "ArrowLeft") {
         if (PointerCurrentPosition > 0) {
             PointerCurrentPosition -= 1;
@@ -50,7 +50,7 @@ inputBox.addEventListener("keydown", (event) => {
         // 没有输入汉字的时候处理send
         if (!isComposing) {
             addHistoryCommand(inputBox.value);
-            addOutput(inputBox.value);
+            await addOutput(inputBox.value);
             inputBox.value = null;
             inputCmd.innerHTML = spanInputBlock;
         }
@@ -68,7 +68,7 @@ inputBox.addEventListener("keydown", (event) => {
         }
     }
 
-    
+
     // 处理选中结束之后的左右箭头事件，当前指针位置分别对应选中文本的左右位置
     const selectedText = window.getSelection().toString();
     if (selectedText.length > 0) {
@@ -116,7 +116,7 @@ inputBox.addEventListener("compositionend", (event) => {
 //     // 子元素被添加到了terminalMid
 //     terminalMid.scrollTop = terminalMid.scrollHeight;
 // });
-const scrollObserver = new MutationObserver(function (mutationsList, observer) {
+const scrollObserver_1 = new MutationObserver(function (mutationsList, observer) {
     for (let mutation of mutationsList) {
         if (mutation.type === 'childList') {
             // 子元素被添加到了terminalShow的时候调整terminalMid的视窗位置
@@ -125,7 +125,19 @@ const scrollObserver = new MutationObserver(function (mutationsList, observer) {
     }
 });
 // childList - 子元素列表;   subtree - 孙元素
-scrollObserver.observe(terminalShow, {childList: true, subtree: false});
+scrollObserver_1.observe(terminalShow, {childList: true, subtree: false});
+// terminalInput的display属性变为block的时候
+const scrollObserver_2 = new MutationObserver((mutationsList, observer) => {
+    for (const mutation of mutationsList) {
+        if (mutation.type === "attributes" && mutation.attributeName === "style") {
+            const displayStyle = terminalInput.style.display;
+            if (displayStyle === "block") {
+                terminalMid.scrollTop = terminalMid.scrollHeight;
+            }
+        }
+    }
+});
+scrollObserver_2.observe(terminalInput, { attributes: true });
 
 
 // 添加历史记录

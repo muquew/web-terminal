@@ -26,13 +26,11 @@ function addSpan(type, content) {
         case "Date":
             statusSpan.className = "Date";
             // 获取当前时间并设置为内容
-            var currentDate = new Date();
-            var timeString = currentDate.toLocaleTimeString([], {
+            statusSpan.textContent = new Date().toLocaleTimeString([], {
                 hour: '2-digit',
                 minute: '2-digit',
                 second: '2-digit'
             });
-            statusSpan.textContent = timeString;
             break;
         case "Succ":
             statusSpan.className = "Succ";
@@ -102,10 +100,18 @@ function addBlock(numSpans, ...spanData) {
  * @description 根据命令执行
  * @param {string} command - 命令
  */
-function addOutput(command) {
+async function addOutput(command) {
     addBlock(1, ["cmd", "➜ ~ " + command]);
-
     
+    terminalInput.style.display = "none";
+    
+    await commandProcess(command);
+
+    terminalInput.style.display = "block";
+}
+
+
+async function commandProcess(command) {
     if (command === "") {
         // 处理空命令
     } else if (command.trimStart().startsWith("cd ") || command.trim() === "cd") {
@@ -114,6 +120,8 @@ function addOutput(command) {
         addBlock(1,["cmd", terminalName.innerText]);
     } else if (command.trim() === "ls") {
         Help();
+    } else if (command.trim() === "date"){
+        addBlock(2,['Info', "Date:"], ["cmd", new Date().toString()])
     } else if (command.trimStart().startsWith("echo ") || command.trim() === "echo") {
         addBlock(3, ["Date"], ["Succ", "Echo"], ["cmd", command.replace(/^echo\s*/, "")]);
     } else if (command.trimStart().startsWith("open ") || command.trim() === "open") {
@@ -126,7 +134,7 @@ function addOutput(command) {
             addBlock(2, ["Fail"], ["cmd", "Please add `http | https | ftp` prefix!"]);
         }
     } else if (command.trim() === "intro"){
-        Intro();
+        await Intro();
     } else if (command.trim() === "contact"){
         addBlock(2, ["Info", "Email:"], ["cmd", "`muquew@outlook.com`"]);
         addBlock(2, ["Info", "Github:"], ["cmd", "`https://github.com/muquew`"]);
@@ -152,10 +160,7 @@ function addOutput(command) {
         addBlock(2, ["Fail"], ["cmd", `Command '${command}' not found`]);
         addBlock(2, ["System"], ["cmd", "Type \"help\" to get a supporting command list."]);
     }
-
-    
 }
-
 async function LoadingEffect() {
     await addBlock(1,["Loading"]);
     await new Promise(resolve => setTimeout(resolve, 500));

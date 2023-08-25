@@ -13,8 +13,7 @@ const urlRegex = new RegExp("((http|ftp|https)://)(([a-zA-Z0-9\._-]+\.[a-zA-Z]{2
 // ③：该正则表达式能匹配到URL的末尾，即能匹配到子URL；（如能匹配：http://www.baidu.com/s?wd=a&rsv_spt=1&issp=1&rsv_bp=0&ie=utf-8&tn=baiduhome_pg&inputT=1236）
 // ④：该正则表达式能够匹配端口号；
 
-const Command = ['cd', 'pwd', 'ls', 'echo',
-    'open', 'intro', 'contact', 'cartoon', 'music', 'gallery', 'film',
+const Command = ['cd', 'pwd', 'ls', 'echo', 'date', 
     'open', 'intro', 'contact', 'cartoon', 'music', 'gallery', 'film',
     'help', 'history', 'cls', 'clear', 'exit']
 const historyCommand = {};              // 不要超过9999，四位数
