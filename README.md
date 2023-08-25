@@ -45,7 +45,7 @@
 
 如果你喜欢`Web-terminal`，并且它对你确实有帮助，欢迎给我打赏一杯咖啡哈~
 
-<img src="./pay/1692947118923.jpg" alt="支付宝" style="zoom:25%;" /><img src="README.zh_CN.assets/wechat.png" alt="微信" style="zoom:25%;" />
+<img src="./pay/1692947118923.jpg" alt="支付宝" style="zoom:25%;" /><img src="./pay/wechat.png" alt="微信" style="zoom:25%;" />
 
 
 
