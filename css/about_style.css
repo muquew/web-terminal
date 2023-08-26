@@ -97,6 +97,14 @@ body {
     overflow-y: auto;
 }
 
+.terminal-mid::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0.2rem;
+}
+.terminal-mid::-webkit-scrollbar-thumb {
+    background-color: #999999; /* 滑块颜色 */
+}
+
 .terminal-block, .terminal-input, .hidden-element {
     margin: 0;
     padding-bottom: 1.1rem;
