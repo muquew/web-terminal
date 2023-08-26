@@ -142,6 +142,8 @@ scrollObserver_2.observe(terminalInput, { attributes: true });
 
 // 添加历史记录
 function addHistoryCommand(value) {
+    if(value === "" || value === null)
+        return;
     historyCommand[historyCommandCounter] = value;
     historyCommandCounter++;
     historyCommandCurrent = historyCommandCounter;
