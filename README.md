@@ -20,9 +20,9 @@
 
 ![terminal-intro](./docs/terminal.png)![terminal-intro](./docs/help.png)
 
-[在线体验](http://www.muquew.com/about.html/)
+[在线体验](http://www.muquew.com/about.html)
 
-[`Web-terminal`](http://www.muquew.com/about.html/) 是一款终端模拟页面
+[`Web-terminal`](http://www.muquew.com/about.html) 是一款终端模拟页面
 
 如果你正在找一款展示信息的交互式页面，那么 `Web-terminal` 会是你很好的选择。
 
