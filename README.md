@@ -1,6 +1,6 @@
 <div align="center">
 	<h1>Web-terminal</h1>
-	<sub>Built with ❤︎ by <a href="https://muquew.com">muquew</a>
+	<sub>Built with ❤︎ by <a href="https://www.muquew.com">muquew</a>
 </div>
 <hr/>
 <p align="center">🚀 <strong>一个简洁&漂亮的终端模拟页面</strong></p>
@@ -20,9 +20,9 @@
 
 ![terminal-intro](./docs/terminal.png)![terminal-intro](./docs/help.png)
 
-[在线体验](https://muquew.com/about/)
+[在线体验](https://www.muquew.com/about.html/)
 
-[`Web-terminal`](https://muquew.com/about/) 是一款终端模拟页面
+[`Web-terminal`](https://www.muquew.com/about.html/) 是一款终端模拟页面
 
 如果你正在找一款展示信息的交互式页面，那么 `Web-terminal` 会是你很好的选择。
 
